@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Semianrio</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='estilo.css')}}">
+</head>
+<body>
+    <h1 class="centrado">Editar Seminarios</h1>
+    <!-- Corregí la sintaxis y pasé el id en url_for -->
+    <form action="{{ url_for('editar', id=contacto['id']) }}" method="POST">
+        <div class="container">
+            <div class="card">
+                <h2>Datos</h2>
+                Fecha: <input type="date" name="fecha" value="{{ contacto['fecha'] }}" required><br>
+                Nombre: <input type="text" name="nombre" value="{{ contacto['nombre'] }}" required><br>
+                Apellido: <input type="text" name="apellido" value="{{ contacto['apellido'] }}" required><br>
+                <label>Turno:</label><br>
+                <input type="radio" name="turno" value="Mañana" {% if contacto['turno'] == 'Mañana' %}checked{% endif %}> Mañana<br>
+                <input type="radio" name="turno" value="Tarde" {% if contacto['turno'] == 'Tarde' %}checked{% endif %}> Tarde<br>
+                <input type="radio" name="turno" value="Noche" {% if contacto['turno'] == 'Noche' %}checked{% endif %}> Noche<br>
+            </div>
+
+            <div class="card">
+                <h2>Seminarios Disponibles</h2>
+                <label>Seminarios:</label><br>
+                <input type="checkbox" name="seminarios" value="Inteligencia Artificial" {% if 'Inteligencia Artificial' in contacto['seminarios'] %}checked{% endif %}> Inteligencia Artificial <br>
+                <input type="checkbox" name="seminarios" value="Machine Learning" {% if 'Machine Learning' in contacto['seminarios'] %}checked{% endif %}> Machine Learning <br>
+                <input type="checkbox" name="seminarios" value="Simulacion con Arena" {% if 'Simulacion con Arena' in contacto['seminarios'] %}checked{% endif %}> Simulación con Arena <br>
+                <input type="checkbox" name="seminarios" value="Robotica Educativa" {% if 'Robotica Educativa' in contacto['seminarios'] %}checked{% endif %}> Robótica Educativa <br>
+            </div>
+        </div>
+        
+        <input type="submit">
+    </form>
+</body>
+</html>

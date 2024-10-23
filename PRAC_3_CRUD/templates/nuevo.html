@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Contacto</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='estilo.css')}}">
+</head>
+<body>
+    <h1 class="centrado">Nuevo Seminario</h1>
+    <form action="{{ url_for('nuevo') }}" method="POST">
+        <div class="container">
+            <div class="card">
+                Fecha: <input type="date" name="fecha" required><br>
+                Nombre: <input type="text" name="nombre" required><br>
+                Apellido: <input type="text" name="apellido" required><br>
+                Turno: 
+                        <input type="radio" name="turno" value="Mañana"> Mañana 
+                        <input type="radio" name="turno" value="Tarde"> Tarde 
+                        <input type="radio" name="turno" value="Noche"> Noche
+            </div>
+            <div class="card">
+                <h2>Seminarios </h2>
+                <input type="checkbox" name="seminarios" value="Inteligencia Artificial"> Inteligencia Artificial <br>
+                <input type="checkbox" name="seminarios" value="Machine Learning"> Machine Learning <br>
+                <input type="checkbox" name="seminarios" value="Simulacion con Arena"> Simulación con Arena <br>
+                <input type="checkbox" name="seminarios" value="Robotica Educativa"> Robótica Educativa <br>
+
+            </div>
+        </div>
+
+        <input type="submit">
+    </form>
+</body>
+</html>
